@@ -60,9 +60,25 @@ function draw() {
 
   }
 
-  if(player.isTouching(banana)){
+  if(FoodGroup.isTouching(player)){
+    FoodGroup.destroyEach();
     score++;
-    player.scale = scale + 0.2;
+    player.scale += 0.05;
+  }
+
+  if(obstaclesGroup.isTouching(player)){
+    gameState = END;
+  }
+  else if(gameState === END){
+    background.velocityX = 0;
+    player.visible = false;
+
+    FoodGroup.destroyEach();
+    obstaclesGroup.destroyEach();
+
+    textSize(30);
+    fill(255);
+    text("Game Over!", 300, 220);
   }
 
   drawSprites();
