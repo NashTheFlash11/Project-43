@@ -101,7 +101,7 @@ function spawnFood(){
 function spawnObstacles(){
   if (frameCount % 60 === 0){
     var obstacle = createSprite(600, 400, 40, 10);
-    obstacle.y = random(120, 200);
+    obstacle.y = random(120, 350);
     obstacle.addImage(obstacleImage);
     obstacle.scale = 0.05;
     obstacle.velocityX = -8;
