@@ -5,7 +5,7 @@ var bananaImage;
 var obstacleImage;
 var FoodGroup;
 var obstaclesGroup;
-var score = 0;
+var score=0;
 
 var END =0;
 var PLAY =1;
@@ -40,10 +40,12 @@ function setup() {
 }
 
 function draw() { 
-  background(0);
-
+  background(backImage);
+  
   if(gameState===PLAY){
-    text("Score: " + score, 50, 50);
+    fill(255);
+    textSize(30);
+    text("Score: " + score, 500, 250);
 
     spawnFood();
     spawnObstacles();
@@ -62,7 +64,7 @@ function draw() {
 
   if(FoodGroup.isTouching(player)){
     FoodGroup.destroyEach();
-    score++;
+    score = score + 1;
     player.scale += 0.05;
   }
 
@@ -70,7 +72,7 @@ function draw() {
     gameState = END;
   }
   else if(gameState === END){
-    background.velocityX = 0;
+    backgr.velocityX = 0;
     player.visible = false;
 
     FoodGroup.destroyEach();
